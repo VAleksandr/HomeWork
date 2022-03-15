@@ -39,7 +39,7 @@ const outputTodo = todos => {
 const deleteTodo = () => document.querySelectorAll('p').forEach(teg_p => teg_p.remove());
 
 btn.onclick = () => {
-  const number_todo = +input.value;
+  const number_todo = input.value;
 
   requestTodo(`${url}${number_todo}`);    
 }
