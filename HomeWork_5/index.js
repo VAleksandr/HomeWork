@@ -75,17 +75,16 @@ const openingHours = {
 };
 
 const makeAnOrder = (day, time) => {
-  const newDay = openingHours.dayOfWeek.findIndex(item => item === 'FRIDAY');
+  const newDay = openingHours.dayOfWeek.findIndex(item => item === day);
   const arrPeriodsDay = openingHours.periods[newDay];
   const orderTime = time.split(':');
   const timeKitchen = 30;
   const orderStatus = [];
   const workStatus = [];
-
   
   if (!!(newDay != -1)) {
     const timeStart = +arrPeriodsDay[0].from.split(':').join('');
-    const timeEnd = +arrPeriodsDay[2].to.split(':').join('');  
+    const timeEnd = +arrPeriodsDay[arrPeriodsDay-1].to.split(':').join('');  
 
     if (orderTime.join('') < timeStart || orderTime.join('') >= timeEnd) {
       return 'CLOSED';
