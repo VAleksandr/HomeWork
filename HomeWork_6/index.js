@@ -1,8 +1,7 @@
-const todos_container = document.getElementById('todos_container');
-
-const requestTodo = async () => {
-  for (let i = 1; i <= 30; i++) {
-    fetch(`https://jsonplaceholder.typicode.com/todos/${i}`)
+const requestTodo = async (n) => {
+  const todos_container = document.getElementById('todos_container');
+  for (let i = 1; i <= n; i++) {
+    await fetch(`https://jsonplaceholder.typicode.com/todos/${i}`)
       .then(response => {
         if(response.ok) {
           response.json().then(result => outputTodo(result));
@@ -40,4 +39,4 @@ const deleteTodo = () => {
   }); 
 }
 
-requestTodo();    
+requestTodo(30);    
